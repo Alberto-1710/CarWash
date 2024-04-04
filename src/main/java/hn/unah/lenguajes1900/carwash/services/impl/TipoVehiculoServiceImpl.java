@@ -17,4 +17,13 @@ public class TipoVehiculoServiceImpl implements TipoVehiculoService{
     public TipoVehiculo crearTipoVehiculo(TipoVehiculo tipoVehiculo) {
         return this.tipoVehiculoRepository.save(tipoVehiculo);
     }
+
+    @Override
+    public String eliminarPorId(long idTipoVehiculo) {
+        if(this.tipoVehiculoRepository.findById(idTipoVehiculo).isPresent()){
+            this.tipoVehiculoRepository.deleteById(idTipoVehiculo);
+        return "Tipo Vehiculo eliminado exitosamente.";
+        }
+        return "Tipo de Vehiculo que desea eliminar no existe.";
+            }
 }
